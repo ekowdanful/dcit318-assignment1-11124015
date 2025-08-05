@@ -1,0 +1,37 @@
+ static void TriangleTypeIdentifier()
+    {
+        Console.Clear();
+        Console.WriteLine("Enter the lengths of the three sides of the triangle:");
+
+        Console.Write("Side 1: ");
+        bool side1Valid = double.TryParse(Console.ReadLine(), out double side1);
+        Console.Write("Side 2: ");
+        bool side2Valid = double.TryParse(Console.ReadLine(), out double side2);
+        Console.Write("Side 3: ");
+        bool side3Valid = double.TryParse(Console.ReadLine(), out double side3);
+
+        if (!side1Valid || !side2Valid || !side3Valid || side1 <= 0 || side2 <= 0 || side3 <= 0)
+        {
+            Console.WriteLine("Invalid input. All sides must be positive numbers.");
+        }
+        else if (side1 + side2 <= side3 || side1 + side3 <= side2 || side2 + side3 <= side1)
+        {
+            Console.WriteLine("These sides do not form a valid triangle.");
+        }
+        else if (side1 == side2 && side2 == side3)
+        {
+            Console.WriteLine("Triangle Type: Equilateral");
+        }
+        else if (side1 == side2 || side1 == side3 || side2 == side3)
+        {
+            Console.WriteLine("Triangle Type: Isosceles");
+        }
+        else
+        {
+            Console.WriteLine("Triangle Type: Scalene");
+        }
+
+        Console.WriteLine("\nPress Enter to return to the menu...");
+        Console.ReadLine();
+    }
+}
